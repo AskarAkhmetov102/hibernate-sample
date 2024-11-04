@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "cars")
+@Table(name = "car")
 public class Car {
 
     @Id
@@ -36,5 +38,13 @@ public class Car {
             @AttributeOverride(name = "horsePower", column = @Column(name = "engine_horse_power"))
     })
     private Engine engine;
+
+    @Embedded
+    @ElementCollection
+    @CollectionTable(name = "glass")
+    @AttributeOverrides(
+            @AttributeOverride(name = "number", column = @Column(name = "glass_number"))
+    )
+    private List<Glass> glasses;
 
 }
