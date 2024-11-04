@@ -47,6 +47,9 @@ public class Main {
 
             session.persist(car);
 
+            var cars = session.createQuery("select c from Car c", Car.class).list();
+            cars.forEach(System.out::println);
+
             session.getTransaction().commit();
         }
     }
