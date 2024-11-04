@@ -41,10 +41,13 @@ public class Car {
 
     @Embedded
     @ElementCollection
+    @CollectionTable(name = "wheel")
+    @AttributeOverride(name = "isWinter", column = @Column(name = "is_winter"))
+    private List<Wheel> wheels;
+
+    @ElementCollection
     @CollectionTable(name = "glass")
-    @AttributeOverrides(
-            @AttributeOverride(name = "number", column = @Column(name = "glass_number"))
-    )
-    private List<Glass> glasses;
+    @Column(name = "glass_number")
+    private List<String> glasses;
 
 }

@@ -2,7 +2,7 @@ package com.askarakhmetov.sample1;
 
 import com.askarakhmetov.sample1.entity.Car;
 import com.askarakhmetov.sample1.entity.Engine;
-import com.askarakhmetov.sample1.entity.Glass;
+import com.askarakhmetov.sample1.entity.Wheel;
 import com.askarakhmetov.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 /**
- * Sample of using Embeddable class
+ * Sample of using @Embeddable and @ElementCollection
  */
 public class Main {
     public static void main(String[] args) {
@@ -31,11 +31,17 @@ public class Main {
                             .number(HibernateUtil.generateAlphanumericStr(9))
                             .horsePower(128)
                             .build())
+                    .wheels(List.of(
+                            Wheel.builder().radius(16).isWinter(true).build(),
+                            Wheel.builder().radius(16).isWinter(true).build(),
+                            Wheel.builder().radius(16).isWinter(true).build(),
+                            Wheel.builder().radius(16).isWinter(true).build()
+                    ))
                     .glasses(List.of(
-                            Glass.builder().number(HibernateUtil.generateAlphanumericStr(9)).build(),
-                            Glass.builder().number(HibernateUtil.generateAlphanumericStr(9)).build(),
-                            Glass.builder().number(HibernateUtil.generateAlphanumericStr(9)).build(),
-                            Glass.builder().number(HibernateUtil.generateAlphanumericStr(9)).build()
+                            HibernateUtil.generateAlphanumericStr(9),
+                            HibernateUtil.generateAlphanumericStr(9),
+                            HibernateUtil.generateAlphanumericStr(9),
+                            HibernateUtil.generateAlphanumericStr(9)
                     ))
                     .build();
 

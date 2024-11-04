@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Embeddable
-public class Glass {
-    String number;
+public class Wheel {
+
+    Integer radius;
+    Boolean isWinter;
+
 }
